@@ -1,8 +1,6 @@
 #! /usr/bin/env node
 
-export function log(...args: any[]) {
-  console.log(...args);
-}
+import { log } from './common/utils';
 
 export function main() {
   log('VaporTs CLI');

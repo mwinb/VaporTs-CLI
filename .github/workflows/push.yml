@@ -19,6 +19,6 @@ jobs:
       - name: CI
         run: npm ci
       - name: Jest Tests
-        run: npm test:unit
+        run: npm run test:unit
       - name: eslint
         run: npm run lint
