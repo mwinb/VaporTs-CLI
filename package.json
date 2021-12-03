@@ -1,19 +1,45 @@
 {
-  "name": "cli",
+  "name": "@vaports/cli",
   "version": "0.0.1",
-  "description": "CLI tool for creating VaporTs Applications.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "github.com/mwinb/vaports-cli"
+  "description": "CLI tool for bootstrapping creation of VaporTs applications.",
+  "main": "bin/main.js",
+  "bin": {
+    "vaports": "./bin/main.js"
   },
   "keywords": [
     "VaporTs",
-    "CLI"
+    "CLI",
+    "Node",
+    "Express",
+    "TypeScript"
   ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest --watchAll",
+    "prepare": "npm run build",
+    "prestart": "npm run build",
+    "preversion": "npm run lint",
+    "start": "node ./bin/main.js",
+    "test:loop": "jest --watchAll",
+    "lint": "eslint \"./src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepublishOnly": "npm test && npm run lint",
+    "version": "npm run format && git add -A src",
+    "test:unit": "jest --watchAll=false --silent --coverage --bail"
+  },
   "author": "Michael Winberry",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.11",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "jest": "^27.4.3",
+    "prettier": "^2.5.0",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.5.2"
+  }
 }
