@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-import * as yargs from 'yargs';
+// import * as yargs from 'yargs';
 import { log } from './common/utils';
 
 // const usage = '\nUsage: tran <lang_name> sentence to be translated';
