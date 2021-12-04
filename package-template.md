@@ -1,30 +1,35 @@
-
 ### Prompts
+
 - package name
-    - Show current working directory. 
-        - use if prompt empty
-        - validate with default validation regex 
-            - ^(?:@[a-z0-9-*~][a-z0-9-*._~]*/)?[a-z0-9-~][a-z0-9-._~]*$
+  - Show current working directory.
+    - use if prompt empty
+    - validate with default validation regex
+      - ^(?:@[a-z0-9-\*~][a-z0-9-*._~]_/)?[a-z0-9-~][a-z0-9-._~]_$
 - version
-    - default 1.0.0
-    - semver validation
+  - default 0.0.1
+  - semver validation
 - description
 - git repository
-    - none by default
-    - add if not blank
-    - validate url
-- keywords 
-    - csv
+  - none by default
+  - add if not blank
+  - validate url
+- keywords
+  - csv
 - author
 - liscense
-    - (MIT) default
-    - if MIT put license in using author name and current year. 
+  - (MIT) default
+  - if MIT put license in using author name and current year.
 - is this ok?
+
 ## Typescript install
+
 ### Prod
+
 - vaports
 - express
+
 ### Dev
+
 - @types/express
 - @types/jest
 - @types/node
