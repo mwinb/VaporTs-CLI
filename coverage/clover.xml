@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1638547617451" clover="3.2.0">
-  <project timestamp="1638547617451" name="All files">
-    <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="3" coveredelements="3" complexity="0" loc="2" ncloc="2" packages="1" files="1" classes="1"/>
-    <file name="utils.ts" path="/Users/mikewinberry/github/vaports_cli/src/common/utils.ts">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <line num="1" count="1" type="stmt"/>
-      <line num="2" count="1" type="stmt"/>
-    </file>
+<coverage generated="1638587583246" clover="3.2.0">
+  <project timestamp="1638587583246" name="All files">
+    <metrics statements="17" coveredstatements="17" conditionals="2" coveredconditionals="2" methods="11" coveredmethods="11" elements="30" coveredelements="30" complexity="0" loc="17" ncloc="17" packages="2" files="2" classes="2"/>
+    <package name="Classes">
+      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
+      <file name="TemplateBuilder.ts" path="/Users/mikewinberry/github/vaports_cli/src/Classes/TemplateBuilder.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="Helpers">
+      <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+      <file name="Common.Helpers.ts" path="/Users/mikewinberry/github/vaports_cli/src/Helpers/Common.Helpers.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="11" count="17" type="cond" truecount="2" falsecount="0"/>
+      </file>
+    </package>
   </project>
 </coverage>

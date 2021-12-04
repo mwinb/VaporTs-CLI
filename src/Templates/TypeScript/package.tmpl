@@ -1,0 +1,18 @@
+{
+  "name": "{{ name }}",
+  "version": "{{ version }}",
+  "description": "{{ description }}",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "nodemon ./dist/app.js",
+    "start:dev": "nodemon ./src/app.ts",
+    "test": "jest --watchAll",
+    "test:unit": "jest -c jest.config.js --watchAll=false --silent --coverage --bail",
+    "test:integration": "jest -c jest.integration.js --watchAll=false --runInBand --silent --coverage --bail",
+    "test:all": "jest -c jest.all.js --watchAll=false --runInBand --silent --coverage --bail",
+    "prestart": "npm run build"
+  },
+  "author": "",
+  "license": "MIT"
+}

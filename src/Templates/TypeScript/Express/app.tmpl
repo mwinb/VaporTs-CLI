@@ -1,0 +1,17 @@
+import express from 'express';
+import { VaporApp, VaporConfig } from 'vaports';
+
+const port = 5000;
+const config: VaporConfig = {
+  showApi: true,
+  expressApplication: express(),
+  controllers: [],
+  middleware: [express.json()]
+};
+
+const appV1 = new VaporApp(config);
+
+appV1.expressApplication.listen(port, () => {
+  console.log(`VaporTs listening on the port ${port}`);
+  if (appV1.showApi) console.log(`View v1: http://localhost:${port}${appV1.path}`);
+});

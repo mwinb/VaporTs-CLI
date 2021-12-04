@@ -14,24 +14,26 @@
     "TypeScript"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "npm run clean && tsc && npm run move-templates",
     "test": "jest --watchAll",
     "prepare": "npm run build",
     "prestart": "npm run build",
     "preversion": "npm run lint",
     "start": "node ./bin/main.js",
-    "test:loop": "jest --watchAll",
     "lint": "eslint \"./src/**/*.ts\"",
     "format": "prettier --write \"src/**/*.ts\"",
     "prepublishOnly": "npm run test:unit && npm run lint",
     "version": "npm run format && git add -A src",
-    "test:unit": "jest --watchAll=false --silent --coverage --bail"
+    "test:unit": "jest --watchAll=false --silent --coverage --bail",
+    "clean": "npx rimraf bin",
+    "move-templates": "npx copyfiles -u 1 src/**/*.tmpl bin/"
   },
   "author": "Michael Winberry",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.11",
+    "@types/prompts": "^2.0.14",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "eslint": "^8.3.0",
@@ -43,6 +45,6 @@
     "typescript": "^4.5.2"
   },
   "dependencies": {
-    "yargs": "^17.3.0"
+    "prompts": "^2.4.2"
   }
 }
