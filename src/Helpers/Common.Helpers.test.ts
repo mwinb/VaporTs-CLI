@@ -1,4 +1,4 @@
-import { getUserFolder, log, generatePath } from './Common.Helpers';
+import { getUserCurrentFolder, log, generatePath, projectNameValidator } from './Common.Helpers';
 
 describe('Log', () => {
   it('logs the provided text', () => {
@@ -8,13 +8,13 @@ describe('Log', () => {
   });
 });
 
-describe('Getting user folder', () => {
+describe('Getting user cwd', () => {
   beforeEach(() => {
     jest.spyOn(process, 'cwd').mockReturnValue('some/path/folder');
   });
 
   it('gets the user folder', () => {
-    expect(getUserFolder()).toBe('folder');
+    expect(getUserCurrentFolder()).toBe('folder');
   });
 });
 
@@ -33,5 +33,12 @@ describe('Url Path Creation', () => {
 
   it('handles undefined', () => {
     expect(generatePath('/', undefined)).toBe('/');
+  });
+});
+
+describe('project name validator (regex taken from npm package.json docs)', () => {
+  it('enforces the npm project name regex.', () => {
+    expect(projectNameValidator('some invalid name')).toBeFalsy();
+    expect(projectNameValidator('@valid/project.name')).toBeTruthy();
   });
 });
