@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import TemplateFile from '../Interfaces/TemplateFile.Interface';
 import TemplateBuilder from './TemplateBuilder';
+import TemplateFile from '../Interfaces/TemplateFile.Interface';
 
 const mockTemplateContent = 'Some content {{ replaceMe }} {{ replaceMe }}';
 

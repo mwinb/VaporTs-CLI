@@ -1,22 +1,4 @@
-import { getUserFolder, log, generatePath } from './Common.Helpers';
-
-describe('Log', () => {
-  it('logs the provided text', () => {
-    jest.spyOn(console, 'log').mockImplementationOnce(jest.fn);
-    log('log');
-    expect(console.log).toHaveBeenLastCalledWith('log');
-  });
-});
-
-describe('Getting user folder', () => {
-  beforeEach(() => {
-    jest.spyOn(process, 'cwd').mockReturnValue('some/path/folder');
-  });
-
-  it('gets the user folder', () => {
-    expect(getUserFolder()).toBe('folder');
-  });
-});
+import { generatePath } from './Common.Helpers';
 
 describe('Url Path Creation', () => {
   it('joins provided string arguments with a slash', () => {

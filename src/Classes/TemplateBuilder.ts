@@ -1,6 +1,6 @@
-import TemplateFile from '../Interfaces/TemplateFile.Interface';
 import * as fs from 'fs';
 import { generatePath } from '../Helpers/Common.Helpers';
+import TemplateFile from '../Interfaces/TemplateFile.Interface';
 
 class TemplateBuilder {
   constructor(private execPath: string) {}
