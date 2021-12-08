@@ -1,6 +1,6 @@
 import { PromptObject } from 'prompts';
 
-const projectDescriptionPrompt: PromptObject = {
+export const projectDescriptionPrompt: PromptObject = {
   type: 'text',
   name: 'projectDescription',
   message: 'Enter project description:'

@@ -8,6 +8,7 @@ module.exports = {
     '!<rootDir>/src/__mocks__',
     '!<rootDir>/src/common/interfaces/*',
     '!<rootDir>/src/Templates/**',
-    '!<rootDir>/src/Prompts/**'
+    '!<rootDir>/src/Prompts/**',
+    '!<rootDir>/src/**/index.ts'
   ]
 };

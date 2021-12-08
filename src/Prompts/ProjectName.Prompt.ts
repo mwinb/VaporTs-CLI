@@ -1,7 +1,7 @@
 import { PromptObject } from 'prompts';
 import { getUserCurrentFolder, projectNameValidator } from '../Helpers/Prompt.Helpers';
 
-const projectNamePrompt: PromptObject = {
+export const projectNamePrompt: PromptObject = {
   type: 'text',
   name: 'projectName',
   initial: getUserCurrentFolder,

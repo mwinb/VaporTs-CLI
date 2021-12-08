@@ -1,8 +1,9 @@
 import * as fs from 'fs';
-import { generatePath } from '../Helpers/Common.Helpers';
-import TemplateFile from '../Interfaces/TemplateFile.Interface';
+import { TemplateModel } from '.';
+import { generatePath } from '../Helpers';
+import { TemplateFile } from '../Interfaces';
 
-class TemplateBuilder {
+export class TemplateBuilder {
   constructor(private execPath: string) {}
 
   getTemplatePath(file: TemplateFile): string {
@@ -21,11 +22,15 @@ class TemplateBuilder {
     fs.writeFileSync(file.outPath, content);
   }
 
-  replaceTemplateValues(model: Record<string, string | number | boolean>, templateContent: string): string {
-    return Object.keys(model).reduce(
-      (str, k) => str.replace(new RegExp(`{{ ${k} }}`, 'g'), `${model[k]}`),
-      templateContent
+  replaceTemplateValues(models: TemplateModel[], templateString: string): string {
+    return models.reduce(
+      (newTemplateString: string, m: TemplateModel) => this.replaceTemplateValue(m, newTemplateString),
+      templateString
     );
+  }
+
+  replaceTemplateValue(model: TemplateModel, templateString: string): string {
+    return templateString.replace(new RegExp(`{{ ${model.key} }}`, 'g'), model.stringify());
   }
 }
 

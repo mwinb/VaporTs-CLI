@@ -1,6 +1,6 @@
 import { PromptObject, prompt } from 'prompts';
 
-class PromptReader {
+export class PromptReader {
   static async readPrompts(promptObjects: PromptObject[]): Promise<Record<string, any>> {
     return prompt(promptObjects);
   }

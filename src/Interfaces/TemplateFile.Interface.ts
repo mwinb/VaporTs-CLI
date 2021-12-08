@@ -1,6 +1,6 @@
 import { PromptObject } from 'prompts';
 
-interface TemplateFile {
+export interface TemplateFile {
   inPath: string;
   outPath: string;
   prompts?: PromptObject[];

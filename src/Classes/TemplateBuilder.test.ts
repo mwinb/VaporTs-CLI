@@ -1,16 +1,19 @@
 import * as fs from 'fs';
-import TemplateBuilder from './TemplateBuilder';
-import TemplateFile from '../Interfaces/TemplateFile.Interface';
+import { TemplateValue } from '../Types';
+import { TemplateFile } from '../Interfaces';
+import { TemplateBuilder, TemplateModel } from '.';
 
-const mockTemplateContent = 'Some content {{ replaceMe }} {{ replaceMe }}';
+const mockStringifyTemplateModel = (val: TemplateValue) => `${val}`;
+const mockTemplateStringSingle = 'Some content {{ replaceMe }} {{ replaceMe }}';
+const mockTemplateStringMultiple = 'Some content {{ firstReplacement }} {{ secondReplacement }}';
 
 describe('template builder', () => {
-  let templateBuilder: TemplateBuilder;
   let mockFiles: TemplateFile[];
+  let templateBuilder: TemplateBuilder;
 
   beforeEach(() => {
     mockFiles = [{ inPath: 'templates/shared/directCopy.tmpl', outPath: 'src/directCopy.js' }];
-    jest.spyOn(fs, 'readFileSync').mockReturnValue(mockTemplateContent);
+    jest.spyOn(fs, 'readFileSync').mockReturnValue(mockTemplateStringSingle);
     jest.spyOn(fs, 'writeFileSync').mockImplementation();
     jest.spyOn(fs, 'copyFileSync').mockImplementation();
     templateBuilder = new TemplateBuilder('bin/');
@@ -30,17 +33,32 @@ describe('template builder', () => {
   });
 
   it('reads a template given a template file', () => {
-    expect(templateBuilder.readTemplate(mockFiles[0])).toBe(mockTemplateContent);
+    expect(templateBuilder.readTemplate(mockFiles[0])).toBe(mockTemplateStringSingle);
   });
 
   it('writes a template given a template file and content to write', () => {
-    templateBuilder.writeTemplate(mockFiles[0], mockTemplateContent);
-    expect(fs.writeFileSync).toHaveBeenLastCalledWith('src/directCopy.js', mockTemplateContent);
+    templateBuilder.writeTemplate(mockFiles[0], mockTemplateStringSingle);
+    expect(fs.writeFileSync).toHaveBeenLastCalledWith('src/directCopy.js', mockTemplateStringSingle);
   });
 
-  it('replaces template values in a string given an json object model', () => {
-    expect(templateBuilder.replaceTemplateValues({ replaceMe: 'replaced' }, mockTemplateContent)).toBe(
-      'Some content replaced replaced'
-    );
+  it('replaces a template value in a string given a TemplateModel', () => {
+    expect(
+      templateBuilder.replaceTemplateValue(
+        new TemplateModel('replaceMe', 'replaced', mockStringifyTemplateModel),
+        mockTemplateStringSingle
+      )
+    ).toBe('Some content replaced replaced');
+  });
+
+  it('replaces multiple values in a template string given an array of TemplateModel', () => {
+    expect(
+      templateBuilder.replaceTemplateValues(
+        [
+          new TemplateModel('firstReplacement', 'replaced', mockStringifyTemplateModel),
+          new TemplateModel('secondReplacement', 'both values.', mockStringifyTemplateModel)
+        ],
+        mockTemplateStringMultiple
+      )
+    ).toBe('Some content replaced both values.');
   });
 });

@@ -1,6 +1,6 @@
 import { PromptObject } from 'prompts';
 
-const projectKeywordsPrompt: PromptObject = {
+export const projectKeywordsPrompt: PromptObject = {
   type: 'list',
   name: 'projectKeywords',
   separator: ',',
