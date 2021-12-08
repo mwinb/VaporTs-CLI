@@ -1,7 +1,8 @@
 {
-  "name": "{{ projectName }}",
-  "version": "{{ version }}",
-  "description": "{{ projectDescription }}",
+  "name": {{ projectName }},
+  "version": {{ version }},
+  "description": {{ projectDescription }},
+  "keywords": {{ projectKeywords }},
   "main": "dist/app.js",
   "scripts": {
     "build": "tsc",
@@ -13,6 +14,6 @@
     "test:all": "jest -c jest.all.js --watchAll=false --runInBand --silent --coverage --bail",
     "prestart": "npm run build"
   },
-  "author": "{{ author }}",
+  "author": {{ author }},
   "license": "MIT"
 }
