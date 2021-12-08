@@ -1,4 +1,3 @@
-import { strictEqual } from 'assert';
 import * as fs from 'fs';
 import { TemplateModel } from '.';
 import { generatePath } from '../Helpers';
