@@ -12,3 +12,7 @@ export function projectNameValidator(name: string): boolean {
 export function versionValidator(version: string): boolean {
   return semverValid(version) !== null;
 }
+
+export function filterEmptyPromptListItems(val: string[]): string[] {
+  return val.filter(i => i.length > 0);
+}

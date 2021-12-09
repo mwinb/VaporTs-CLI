@@ -1,4 +1,9 @@
-import { getUserCurrentFolder, projectNameValidator, versionValidator } from './Prompt.Helpers';
+import {
+  filterEmptyPromptListItems,
+  getUserCurrentFolder,
+  projectNameValidator,
+  versionValidator
+} from './Prompt.Helpers';
 import * as semver from 'semver';
 
 describe('Getting user cwd', () => {
@@ -31,5 +36,11 @@ describe('semver validation', () => {
 
   it('returns false given an invalid version', () => {
     expect(versionValidator('a.b.c')).toBeFalsy();
+  });
+});
+
+describe('filter empty prompt list items', () => {
+  it('returns a list without any empty string items', () => {
+    expect(filterEmptyPromptListItems(['some item', '', 'some other item'])).toEqual(['some item', 'some other item']);
   });
 });
