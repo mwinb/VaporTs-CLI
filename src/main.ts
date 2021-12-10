@@ -4,6 +4,7 @@ import PromptReader from './Classes/PromptReader';
 import {
   authorPrompt,
   versionPrompt,
+  repositoryPrompt,
   projectNamePrompt,
   projectKeywordsPrompt,
   projectDescriptionPrompt
@@ -16,7 +17,8 @@ export async function main() {
     authorPrompt,
     versionPrompt,
     projectDescriptionPrompt,
-    projectKeywordsPrompt
+    projectKeywordsPrompt,
+    repositoryPrompt
   ]);
   console.log(JSON.stringify(result, null, 2));
 }

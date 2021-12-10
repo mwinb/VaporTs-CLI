@@ -1,5 +1,6 @@
 import {
   filterEmptyPromptListItems,
+  formatRepositoryPrompt,
   getUserCurrentFolder,
   projectNameValidator,
   versionValidator
@@ -42,5 +43,18 @@ describe('semver validation', () => {
 describe('filter empty prompt list items', () => {
   it('returns a list without any empty string items', () => {
     expect(filterEmptyPromptListItems(['some item', '', 'some other item'])).toEqual(['some item', 'some other item']);
+  });
+});
+
+describe('format git repository', () => {
+  it('takes in a url string and returns a record with fields url and type: Git', () => {
+    expect(formatRepositoryPrompt('https://github.com/someuser/somerepo')).toEqual({
+      type: 'git',
+      url: 'https://github.com/someuser/somerepo'
+    });
+  });
+
+  it('returns undefined if no url is provided', () => {
+    expect(formatRepositoryPrompt('')).toBeUndefined();
   });
 });

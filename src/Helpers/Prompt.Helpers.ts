@@ -16,3 +16,7 @@ export function versionValidator(version: string): boolean {
 export function filterEmptyPromptListItems(val: string[]): string[] {
   return val.filter(i => i.length > 0);
 }
+
+export function formatRepositoryPrompt(val: string): Record<string, string> | undefined {
+  return val !== '' ? { type: 'git', url: val } : undefined;
+}
