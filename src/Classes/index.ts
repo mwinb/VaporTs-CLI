@@ -1,3 +1,4 @@
+export * from './FileHandler';
 export * from './PromptReader';
 export * from './TemplateModel';
-export * from './TemplateBuilder';
+export * from './TemplateInstaller';

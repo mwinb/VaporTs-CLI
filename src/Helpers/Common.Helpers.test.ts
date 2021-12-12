@@ -1,3 +1,4 @@
+import { getBinPath } from '.';
 import { generatePath } from './Common.Helpers';
 
 describe('Url Path Creation', () => {
@@ -15,5 +16,12 @@ describe('Url Path Creation', () => {
 
   it('handles undefined', () => {
     expect(generatePath('/', undefined)).toBe('/');
+  });
+});
+
+describe('get bin path', () => {
+  it('returns the require main path', () => {
+    require.resolve('./');
+    expect(getBinPath()).toBeDefined();
   });
 });

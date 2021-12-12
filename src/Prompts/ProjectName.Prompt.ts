@@ -3,7 +3,7 @@ import { getUserCurrentFolder, projectNameValidator } from '../Helpers/Prompt.He
 
 export const projectNamePrompt: PromptObject = {
   type: 'text',
-  name: 'projectName',
+  name: 'name',
   initial: getUserCurrentFolder,
   message: 'Enter project name:',
   validate: projectNameValidator

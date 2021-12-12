@@ -53,8 +53,4 @@ describe('format git repository', () => {
       url: 'https://github.com/someuser/somerepo'
     });
   });
-
-  it('returns undefined if no url is provided', () => {
-    expect(formatRepositoryPrompt('')).toBeUndefined();
-  });
 });
