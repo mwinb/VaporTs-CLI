@@ -3,7 +3,7 @@ import { filterEmptyPromptListItems } from '../Helpers';
 
 export const projectKeywordsPrompt: PromptObject = {
   type: 'list',
-  name: 'projectKeywords',
+  name: 'keywords',
   separator: ',',
   initial: '',
   message: 'Enter project keywords (separated by comma):',

@@ -1,8 +1,8 @@
 {
-  "name": {{ projectName }},
+  "name": {{ name }},
   "version": {{ version }},
-  "description": {{ projectDescription }},
-  "keywords": {{ projectKeywords }},
+  "description": {{ description }},
+  "keywords": {{ keywords }},
   "main": "dist/app.js",
   "scripts": {
     "build": "tsc",
@@ -15,6 +15,6 @@
     "prestart": "npm run build"
   },
   "author": {{ author }},
-  {{ repository }}
+  "repository": {{ repository }},
   "license": {{ license }}
 }

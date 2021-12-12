@@ -4,3 +4,7 @@ export function generatePath(...args: string[]): string {
     .join('/')
     .replace(/\/{2,}/g, '/');
 }
+
+export function getBinPath(): string {
+  return require.main.path;
+}

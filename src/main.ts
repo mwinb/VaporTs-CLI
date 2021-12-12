@@ -1,26 +1,13 @@
 #! /usr/bin/env node
 
-import PromptReader from './Classes/PromptReader';
-import {
-  authorPrompt,
-  versionPrompt,
-  repositoryPrompt,
-  projectNamePrompt,
-  projectKeywordsPrompt,
-  projectDescriptionPrompt
-} from './Prompts';
+import { TemplateInstaller } from './Classes';
+
+import { tsExpressTemplateFiles } from './TemplateFiles';
 
 export async function main() {
   console.log('VaporTs CLI');
-  const result = await PromptReader.readPrompts([
-    projectNamePrompt,
-    authorPrompt,
-    versionPrompt,
-    projectDescriptionPrompt,
-    projectKeywordsPrompt,
-    repositoryPrompt
-  ]);
-  console.log(JSON.stringify(result, null, 2));
+  console.log('Creating Typescript VaporTs Project');
+  await new TemplateInstaller(tsExpressTemplateFiles).initTemplateFiles();
 }
 
 main();

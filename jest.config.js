@@ -9,6 +9,7 @@ module.exports = {
     '!<rootDir>/src/common/interfaces/*',
     '!<rootDir>/src/Templates/**',
     '!<rootDir>/src/Prompts/**',
-    '!<rootDir>/src/**/index.ts'
+    '!<rootDir>/src/**/index.ts',
+    '!<rootDir>/src/TemplateFiles/**'
   ]
 };

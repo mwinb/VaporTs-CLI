@@ -18,5 +18,5 @@ export function filterEmptyPromptListItems(val: string[]): string[] {
 }
 
 export function formatRepositoryPrompt(val: string): Record<string, string> | undefined {
-  return val !== '' ? { type: 'git', url: val } : undefined;
+  return { type: 'git', url: val };
 }

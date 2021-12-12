@@ -1,8 +1,9 @@
+import { defaultStringify } from '../Helpers';
 import { TemplateValue, StringifyTemplateValue } from '../Types';
 
 export class TemplateModel {
-  static factory(valueObj: Record<string, TemplateValue>, method: StringifyTemplateValue): TemplateModel[] {
-    return Object.keys(valueObj).map(key => new TemplateModel(key, valueObj[key], method));
+  static factory(valueObj: Record<string, TemplateValue>, method?: StringifyTemplateValue): TemplateModel[] {
+    return Object.keys(valueObj).map(key => new TemplateModel(key, valueObj[key] ?? '', method ?? defaultStringify));
   }
 
   constructor(public key: string, public value: TemplateValue, private stringifyMethod: StringifyTemplateValue) {}
