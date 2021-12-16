@@ -1,11 +1,12 @@
 import express from 'express';
 import { VaporApp, VaporConfig } from 'vaports';
+import helloWorldController from './controllers/helloWorld';
 
 const port = 5000;
 const config: VaporConfig = {
   showApi: true,
   expressApplication: express(),
-  controllers: [],
+  controllers: [helloWorldController],
   middleware: [express.json()]
 };
 

@@ -1,0 +1,32 @@
+import { Controller, Route } from 'vaports';
+
+@Controller('/helloworld')
+export class HelloWorldController {
+  constructor() {}
+
+  @Route('GET')
+  get(): { message: string } {
+    return { message: 'Hello World' };
+  }
+
+  @Route('GET', { path: '/api' })
+  api(): string {
+    return `
+    <!doctype html>
+      <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <title>Hello World API</title>
+      </head>
+      <body>
+        <h1>GET:</h1>
+        <h2>
+        <pre>${JSON.stringify({ message: 'string' }, null, 2)}<pre>
+        </h2>
+      </body>
+      </html>
+    `;
+  }
+}
+
+export default new HelloWorldController();

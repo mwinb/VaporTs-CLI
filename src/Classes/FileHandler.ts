@@ -43,9 +43,6 @@ export class FileHandler {
 
   createDirs() {
     const dirs = this.getWriteDirs();
-    console.log(this.writePath);
-    console.log(dirs);
-    console.log(fs.existsSync(dirs));
     if (dirs !== '' && !fs.existsSync(dirs)) {
       fs.mkdirSync(dirs, { recursive: true });
     }

@@ -60,5 +60,17 @@ export const tsExpressTemplateFiles: TemplateFile[] = [
   {
     readPath: inPrefix + 'Express/app.tmpl',
     writePath: 'src/app.ts'
+  },
+  {
+    readPath: inPrefix + 'Express/example.controller.tmpl',
+    writePath: 'src/controllers/helloWorld.ts'
+  },
+  {
+    readPath: inPrefix + 'Express/example.controller.test.tmpl',
+    writePath: 'src/controllers/helloWorld.test.ts'
+  },
+  {
+    readPath: inPrefix + 'Express/example.controller.integration.tmpl',
+    writePath: 'src/controllers/helloWorld.integration.ts'
   }
 ];

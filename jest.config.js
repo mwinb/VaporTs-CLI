@@ -10,6 +10,7 @@ module.exports = {
     '!<rootDir>/src/Templates/**',
     '!<rootDir>/src/Prompts/**',
     '!<rootDir>/src/**/index.ts',
-    '!<rootDir>/src/TemplateFiles/**'
+    '!<rootDir>/src/TemplateFiles/**',
+    '!<rootDir>/src/InstallerConfigs/**'
   ]
 };

@@ -1,0 +1,32 @@
+import express from 'express';
+import { VaporApp } from 'vaports';
+import supertest, { SuperTest, Test } from 'supertest';
+import { HelloWorldController } from './helloWorld';
+
+const path = '/helloworld';
+const app = express();
+const helloWorldController = new HelloWorldController();
+let appRequest: SuperTest<Test>;
+
+new VaporApp({
+  showApi: false,
+  controllers: [helloWorldController],
+  middleware: [express.json()],
+  expressApplication: app
+});
+
+beforeAll(() => {
+  appRequest = supertest(app);
+});
+
+describe('/helloworld', () => {
+  test('GET', async () => {
+    const { body } = await appRequest.get(path).expect(200);
+    expect(body.message).toBe('Hello World');
+  });
+
+  test('GET /api', async () => {
+    const { text } = await appRequest.get(path + '/api').expect(200);
+    expect(text).toContain('Hello World API');
+  });
+});
