@@ -3,6 +3,7 @@ import * as prompts from 'prompts';
 import * as helpers from '../Helpers/Common.Helpers';
 import { TemplateInstaller } from '.';
 import { TemplateFile } from '../Interfaces';
+import { PackageInstaller } from '.';
 
 const mockTemplateStringSingle = 'Some content {{ replaceMe }} {{ replaceMe }}';
 const mockPrompt: prompts.PromptObject = {
@@ -20,7 +21,13 @@ describe('Ts Express Installer', () => {
     jest.spyOn(fs, 'writeFileSync').mockImplementation();
     jest.spyOn(fs, 'copyFileSync').mockImplementation();
     jest.spyOn(helpers, 'getBinPath').mockReturnValue('');
-    templateInstaller = new TemplateInstaller(mockFiles);
+    jest.spyOn(PackageInstaller, 'installDev').mockImplementation();
+    jest.spyOn(PackageInstaller, 'installProd').mockImplementation();
+    templateInstaller = new TemplateInstaller({
+      templateFiles: mockFiles,
+      dependencies: ['dep'],
+      devDependencies: ['devDep']
+    });
   });
 
   afterEach(() => {
@@ -50,5 +57,14 @@ describe('Ts Express Installer', () => {
 
     await templateInstaller.initTemplateFiles();
     expect(fs.writeFileSync).toHaveBeenLastCalledWith(mockFiles[0].writePath, 'Some content replaced replaced');
+  });
+
+  it('installs the files and dependencies', async () => {
+    jest.spyOn(TemplateInstaller.prototype, 'initTemplateFiles').mockImplementation();
+    await templateInstaller.install();
+
+    expect(TemplateInstaller.prototype.initTemplateFiles).toHaveBeenCalled();
+    expect(PackageInstaller.installDev).toHaveBeenCalledWith(['devDep']);
+    expect(PackageInstaller.installProd).toHaveBeenCalledWith(['dep']);
   });
 });

@@ -1,0 +1,16 @@
+import { HelloWorldController } from './helloWorld';
+
+describe('Hello World Controller', () => {
+  let helloWorldController: HelloWorldController;
+  beforeEach(() => {
+    helloWorldController = new HelloWorldController();
+  });
+
+  it('gets hello world', () => {
+    expect(helloWorldController.get().message).toBe('Hello World');
+  });
+
+  it('gets the api html', () => {
+    expect(helloWorldController.api()).toContain('Hello World API');
+  });
+});

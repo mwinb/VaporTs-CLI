@@ -1,4 +1,5 @@
-import { getBinPath } from '.';
+import { EventEmitter } from 'events';
+import { getBinPath, listenOnce } from '.';
 import { generatePath } from './Common.Helpers';
 
 describe('Url Path Creation', () => {
@@ -23,5 +24,31 @@ describe('get bin path', () => {
   it('returns the require main path', () => {
     require.resolve('./');
     expect(getBinPath()).toBeDefined();
+  });
+});
+
+describe('listen once', () => {
+  it('waits for an event message before resolving', async () => {
+    const emitter = new EventEmitter();
+    setTimeout(() => {
+      emitter.emit('test', 'some test value');
+    }, 100);
+    expect(await listenOnce(emitter, 'test')).toBe('some test value');
+  });
+
+  it('allows for a custom reject message (error message)', async () => {
+    let error: Error;
+    const emitter = new EventEmitter();
+
+    setTimeout(() => {
+      emitter.emit('testError', new Error('thrown'));
+    }, 100);
+
+    try {
+      await listenOnce(emitter, 'test', 'testError');
+    } catch (err) {
+      error = err;
+    }
+    expect(error.message).toBe('thrown');
   });
 });

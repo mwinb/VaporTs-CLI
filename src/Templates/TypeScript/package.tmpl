@@ -12,7 +12,9 @@
     "test:unit": "jest -c jest.config.js --watchAll=false --silent --coverage --bail",
     "test:integration": "jest -c jest.integration.js --watchAll=false --runInBand --silent --coverage --bail",
     "test:all": "jest -c jest.all.js --watchAll=false --runInBand --silent --coverage --bail",
-    "prestart": "npm run build"
+    "prestart": "npm run build",
+    "lint": "eslint \"./src/**/*.ts\"",
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "author": {{ author }},
   "repository": {{ repository }},
