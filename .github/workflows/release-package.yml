@@ -20,19 +20,4 @@ jobs:
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: git stash
-      - run: git checkout -b bump-${{ github.event.release.tag_name }}
-      - run: git stash pop
-      - run: git add package.json
-      - run: git commit -m "bump version"
-      - run: git push --set-upstream origin bump-${{ github.event.release.tag_name }}
-        env:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: peter-evans/create-pull-request@v3.10.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: bump version to ${{ github.event.release.tag_name }}
-          title: Auto Create Version Bump PR
-          body: Bump Version to ${{ github.event.release.tag_name }}
-          branch: bump-${{ github.event.release.tag_name }} 
-          base: main
+
