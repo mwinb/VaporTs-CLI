@@ -26,9 +26,9 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: peter-evans/create-pull-request@v3.10.1
         with:
-          token: ${{ secrets.GH_TOKEN }}
-          commit-message: Auto Pull Request
-          title: Your desired title
-          body: Auto-created Pull Request
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: bump version to ${{ github.event.release.tag_name }}
+          title: Auto Create Version Bump PR
+          body: Bump Version to ${{ github.event.release.tag_name }}
           branch: ${{ github.event.release.tag_name }} # The branch where you commit
-          base: develop
+          base: main
