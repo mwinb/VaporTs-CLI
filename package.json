@@ -1,6 +1,6 @@
 {
   "name": "@vaports/cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "CLI tool for bootstrapping creation of VaporTs applications.",
   "main": "bin/main.js",
   "bin": {

@@ -16,10 +16,19 @@ jobs:
       - run: npm ci
       - run: git config --global user.name "mwinb"
       - run: git config --global user.email "michael.winberry@github.com"
+      - run: git checkout -b ${{ github.event.release.tag_name }}
       - run: npm version ${{ github.event.release.tag_name }} --allow-same-version
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: git push origin HEAD:main
+      - run: git push --set-upstream origin ${{ github.event.release.tag_name }}
         env:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: peter-evans/create-pull-request@v3.10.1
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          commit-message: Auto Pull Request
+          title: Your desired title
+          body: Auto-created Pull Request
+          branch: ${{ github.event.release.tag_name }} # The branch where you commit
+          base: develop
