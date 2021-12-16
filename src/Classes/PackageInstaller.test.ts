@@ -1,7 +1,6 @@
-import * as childProcess from 'child_process';
-import { emit } from 'process';
-import { EventEmitter } from 'stream';
 import { PackageInstaller } from '.';
+import { EventEmitter } from 'stream';
+import * as childProcess from 'child_process';
 
 describe('Package installer', () => {
   let emitter: EventEmitter;
