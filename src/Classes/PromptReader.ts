@@ -1,3 +1,4 @@
+import { exit } from '../Helpers';
 import { PromptObject, prompt } from 'prompts';
 import { validateInputsPrompt } from '../Prompts';
 
@@ -6,7 +7,7 @@ export class PromptReader {
     let result: Record<string, any>;
     let confirmation: Record<string, any>;
     do {
-      result = await prompt(promptObjects);
+      result = await prompt(promptObjects, { onCancel: exit });
       console.log(JSON.stringify(result, null, 2));
       confirmation = await prompt(validateInputsPrompt);
     } while (!confirmation.confirmed);
