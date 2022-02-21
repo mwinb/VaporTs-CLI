@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
-import { getBinPath, listenOnce } from '.';
 import { generatePath } from './Common.Helpers';
+import { exit, getBinPath, listenOnce } from '.';
 
 describe('Url Path Creation', () => {
   it('joins provided string arguments with a slash', () => {
@@ -50,5 +50,16 @@ describe('listen once', () => {
       error = err;
     }
     expect(error.message).toBe('thrown');
+  });
+});
+
+describe('exit', () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+  it('calls process.exit', () => {
+    jest.spyOn(process, 'exit').mockImplementation();
+    exit();
+    expect(process.exit).toHaveBeenCalled();
   });
 });

@@ -22,3 +22,7 @@ export async function listenOnce<T>(listener: EventEmitter, event: string, error
       });
   });
 }
+
+export function exit(): void {
+  process.exit();
+}
